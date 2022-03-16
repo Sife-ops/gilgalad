@@ -3,6 +3,7 @@
 cdk.context.json
 .env
 frontend-vite/
+frontend-cra/
 
 # dependencies
 /node_modules

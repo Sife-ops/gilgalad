@@ -30,11 +30,12 @@ export default class MyStack extends sst.Stack {
     api.attachPermissions([table]);
 
     // Deploy our React app
-    const site = new sst.ReactStaticSite(this, "ReactSite", {
+    // const site = new sst.ReactStaticSite(this, "ReactSite", {
+    const site = new sst.ViteStaticSite(this, "ViteSite", {
       path: "frontend",
       environment: {
         // Pass in the API endpoint to our app
-        REACT_APP_API_URL: api.url,
+        VITE_API_URL: api.url,
       },
       customDomain: {
         domainName: "dev2.goettsch.xyz",
