@@ -30,7 +30,7 @@ export default class MyStack extends sst.Stack {
     api.attachPermissions([table]);
 
     // Deploy our React app
-    // const site = new sst.ReactStaticSite(this, "ReactSite", {
+    const domain = scope.stage === "prod" ? "prod0" : "dev0";
     const site = new sst.ViteStaticSite(this, "ViteSite", {
       path: "frontend",
       environment: {
@@ -38,9 +38,9 @@ export default class MyStack extends sst.Stack {
         VITE_API_URL: api.url,
       },
       customDomain: {
-        domainName: "dev2.goettsch.xyz",
-        domainAlias: "www.dev2.goettsch.xyz",
-        hostedZone: 'goettsch.xyz',
+        domainName: `${domain}.goettsch.xyz`,
+        domainAlias: `www.${domain}.goettsch.xyz`,
+        hostedZone: "goettsch.xyz",
       },
     });
 
