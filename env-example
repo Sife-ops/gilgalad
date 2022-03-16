@@ -2,10 +2,10 @@
 # To apply them to your Lambda functions, checkout this doc - https://docs.serverless-stack.com/environment-variables#environment-variables-in-lambda-functions
 
 # .env
-DOMAIN=
+DOMAIN=website.com
 
 # .env.dev
-SUBDOMAIN=dev0
+SUBDOMAIN=project-dev
 
 # .env.prod
-SUBDOMAIN=prod0
+SUBDOMAIN=project-prod
