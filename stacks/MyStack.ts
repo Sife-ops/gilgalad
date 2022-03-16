@@ -1,5 +1,6 @@
 import * as sst from "@serverless-stack/resources";
-import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
+
+const { DOMAIN, SUBDOMAIN } = process.env;
 
 export default class MyStack extends sst.Stack {
   constructor(scope: sst.App, id: string, props?: sst.StackProps) {
@@ -30,7 +31,7 @@ export default class MyStack extends sst.Stack {
     api.attachPermissions([table]);
 
     // Deploy our React app
-    const domain = scope.stage === "prod" ? "prod0" : "dev0";
+    // const domain = scope.stage === "prod" ? "prod0" : "dev0";
     const site = new sst.ViteStaticSite(this, "ViteSite", {
       path: "frontend",
       environment: {
@@ -38,9 +39,9 @@ export default class MyStack extends sst.Stack {
         VITE_API_URL: api.url,
       },
       customDomain: {
-        domainName: `${domain}.goettsch.xyz`,
-        domainAlias: `www.${domain}.goettsch.xyz`,
-        hostedZone: "goettsch.xyz",
+        domainName: `${SUBDOMAIN}.${DOMAIN}`,
+        domainAlias: `www.${SUBDOMAIN}.${DOMAIN}`,
+        hostedZone: `${DOMAIN}`,
       },
     });
 
