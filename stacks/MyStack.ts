@@ -1,4 +1,5 @@
 import * as sst from "@serverless-stack/resources";
+import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 
 export default class MyStack extends sst.Stack {
   constructor(scope: sst.App, id: string, props?: sst.StackProps) {
@@ -34,6 +35,11 @@ export default class MyStack extends sst.Stack {
       environment: {
         // Pass in the API endpoint to our app
         REACT_APP_API_URL: api.url,
+      },
+      customDomain: {
+        domainName: "dev2.goettsch.xyz",
+        domainAlias: "www.dev2.goettsch.xyz",
+        hostedZone: 'goettsch.xyz',
       },
     });
 
